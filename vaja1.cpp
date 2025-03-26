@@ -18,27 +18,38 @@ bool Branje_Stevil(vector<int> &vec, const char s[]) {
 	input.close();
 	return true;
 }
+bool Branje_Stevil(vector<int> &vec, const char s[]) {
+	ifstream input(s);
+	int st;
 
-void Izpis_Stevil(int* polje, unsigned int velikost) {
-	ofstream output("out.txt");
+	if (!input.is_open()) {
+		return false;
+	}
 
-	for (int i = 0; i<velikost; i++)
-		output << polje[i] << ' ';
+	while (!input.eof()) {
+		input >> st;
+		vec.push_back(st);
+		while (isspace(input.peek())) input.get();
+	}
+	input.close();
+	return true;
 }
 
-int main(int argc, const char* argv[]) {
-	vector<int> A;
+bool Branje_Stevil(vector<int> &vec, const char s[]) {
+	ifstream input(s);
+	int st;
 
-	if (argc < 3) return 0;
-	if (!Branje_Stevil(A, argv[2])) return 0;
-
-	if (argv[1][0] == '0') {
-		//counting sort
+	if (!input.is_open()) {
+		return false;
 	}
-	else {
-		//Roman sort
-	}
-	Izpis_Stevil(&A[0],A.size());
 
-	return 0;
+	while (!input.eof()) {
+		input >> st;
+		vec.push_back(st);
+		while (isspace(input.peek())) input.get();
+	}
+	input.close();
+	return true;
 }
+
+
